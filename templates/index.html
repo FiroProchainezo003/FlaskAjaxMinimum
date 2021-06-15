@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>From サンプル</title>
+    <script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+
+    <style>
+        div {
+            margin-left: 10px;
+            border: 1px solid #000000;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>時間取得(fetch)</h2>
+        <p>時間：<span id="date_fetch"></span></p>
+        <button id="get_data_fetch" onclick="get_date_fetch()">時間取得</button>
+    </div>
+    <div>
+        <h2>時間取得(Ajax)</h2>
+        <p>時間：<span id="date_jquery"></span></p>
+        <button id="get_data_jquery" onclick="get_data_jquery()">時間取得</button>
+    </div>
+
+<script type="text/javascript">
+    function get_date_fetch() {
+        fetch('{{ url_for('get_datetime') }}', {
+            method: 'POST',
+            headers: {
+                'Content_Type': 'application/json'
+            },
+            cache: 'no-cache'
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data.date)
+            document.getElementById('date_fetch').textContent = data.date
+        })
+        .catch((error) => console.error(error));
+    }
+
+    function get_data_jquery() {
+        $.ajax({
+            url: '{{ url_for('get_datetime') }}',
+            type: 'POST',
+            dataType: 'json',
+            timeout: 5000,
+        })
+        .done(function(data){
+            console.log(data.date)
+            document.getElementById('date_jquery').textContent = data.date
+
+        })
+        .fail(function(){
+            console.error('失敗')
+        })
+    }
+</script>
+</body>
+</html>
