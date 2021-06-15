@@ -1,14 +1,14 @@
-# Flask Request最小サンプル
+# Flask Ajax最小サンプル
 
 ## プロジェクトについて
 
-このプロジェクトは javascript からのrequestに応答する最小サンプルです。<br>
+このプロジェクトは javascript から AjaxでRequestを送り、Responseの内容を「時間：」に表示するプログラムです。<br>
 
 ## プロジェクトの取得方法
 
 クローンしてください。
 ```
-git clone https://github.com/FiroProchainezo003/
+git clone https://github.com/FiroProchainezo003/FlaskAjaxMinimum
 ```
 
 ## 実行方法
@@ -17,7 +17,7 @@ git clone https://github.com/FiroProchainezo003/
 
 ```
 # Cloneしたフォルダで
-$ python3 -m vevn venv
+$ python3 -m venv venv
 $ venv\Scripts\activate
 $ python app.py
 ```
@@ -29,7 +29,7 @@ $ python app.py
 
 ```
 # Cloneしたフォルダで
-$ python3 -m vevn venv
+$ python3 -m venv venv
 $ source venv/Scripts/activate
 $ python app.py
 ```
